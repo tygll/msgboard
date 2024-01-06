@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h1>{{ title }}</h1>
+
+{{#if user}}
+    <p>Welcome, {{ user.username }}!</p>
+    <p><a href="/logout">Logout</a></p>
+    {{#if user.isAdmin}}
+    <p><a href="/users">User Management</a></p>
+    {{/if}}
+{{else}}
+    <p><a href="/login">Login</a> | <a href="/register">Register</a></p>
+{{/if}}
+
+<h2>Available Forums</h2>
+<ul>
+    {{#each forums}}
+        <li><a href="/forums/{{ this.id }}">{{ this.title }}</a></li>
+    {{/each}}
+</ul>
+</body>
+</html>

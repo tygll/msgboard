@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>{{ title }}</title>
+</head>
+<body>
+<p><a href="/index">Back to Index</a></p>
+
+<h1>{{ forum.title }}</h1>
+
+<form action="/forums/{{ forum.id }}/post" method="post">
+    <label for="message">Message:</label>
+    <br>
+    <textarea name="message" id="message" rows="4" cols="50" required></textarea>
+    <br>
+    <button type="submit">Post Message</button>
+</form>
+
+<h2>Messages</h2>
+<ul>
+    {{#each messages}}
+        <li>
+            <strong>{{ username }}</strong>
+            <span>{{timestamp }}</span>
+            <p><i>{{ message }}</i></p>
+        </li>
+    {{/each}}
+</ul>
+
+<p><a href="/index">Back to Index</a></p>
+</body>
+</html>
