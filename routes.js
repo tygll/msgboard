@@ -1,6 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const sqlite3 = require("sqlite3");
+
+const fs = require('fs');
+const path = require('path');
+
+const directoryPath = path.join(__dirname, 'data');
+
+// Check if the "data" directory exists
+if (!fs.existsSync(directoryPath)) {
+    // If not, create the "data" directory
+    fs.mkdirSync(directoryPath);
+    console.log('Directory "data" created successfully.');
+} else {
+    console.log('Directory "data" already exists.');
+}
+
 const db = new sqlite3.Database('data/messageboard.db');
 const axios = require('axios');
 
